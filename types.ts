@@ -44,10 +44,27 @@ export enum ViewState {
   MARKET_INTEL = 'MARKET_INTEL',
 }
 
+export enum TransactionType {
+  DISBURSEMENT = 'DISBURSEMENT', // B2C: Business paying Farmer
+  REPAYMENT = 'REPAYMENT'        // C2B: Farmer paying Business (Lipa Mdogo Mdogo)
+}
+
+export enum LoanStage {
+  APPLICATION = 'APPLICATION',
+  ASSESSING = 'ASSESSING',
+  REVIEW = 'REVIEW',
+  DISBURSING = 'DISBURSING',
+  ACTIVE = 'ACTIVE',
+  REPAYING = 'REPAYING',
+  COMPLETED = 'COMPLETED'
+}
+
 export interface MpesaTransaction {
-  id: string;
+  transactionId: string;
+  type: TransactionType;
   status: 'PENDING' | 'COMPLETED' | 'FAILED';
   amount: number;
   phoneNumber: string;
   timestamp: Date;
+  reference: string;
 }
